@@ -1680,6 +1680,9 @@ class TVEpisode(object):
         else:
             show_name = self.show.name 
         
+        filename = os.path.split(self.location)[1]
+        filename = os.path.splitext(filename)[0]
+        
         return {
                    '%SN': show_name,
                    '%S.N': dot(show_name),
@@ -1706,6 +1709,7 @@ class TVEpisode(object):
                    '%0M': '%02d' % self.airdate.month,
                    '%0D': '%02d' % self.airdate.day,
                    '%RT': "PROPER" if self.is_proper else "",
+                   '%F': filename
                    }
 
     def _format_string(self, pattern, replace_map):

@@ -163,13 +163,17 @@ def _generate_sample_ep(multi=None, abd=False):
         secondEp = TVEpisode(2,4,"Ep Name (2)")
         secondEp._status = Quality.compositeStatus(DOWNLOADED, Quality.HDTV)
         secondEp._release_name = ep._release_name
+        secondEp._location = ep._release_name
 
         thirdEp = TVEpisode(2,5,"Ep Name (3)")
         thirdEp._status = Quality.compositeStatus(DOWNLOADED, Quality.HDTV)
         thirdEp._release_name = ep._release_name
+        thirdEp._location = ep._release_name
 
         ep.relatedEps.append(secondEp)
         ep.relatedEps.append(thirdEp)
+
+    ep._location = ep._release_name
 
     return ep
 
